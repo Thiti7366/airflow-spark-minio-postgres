@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 ###############################################
 # Parameters
 ###############################################
-spark_conn = os.environ.get("spark_conn", "spark_conn")
+spark_conn = os.environ.get("spark_default", "spark_default")
 spark_master = "spark://spark:7077"
 spark_app_name = "Spark Hello World"
 

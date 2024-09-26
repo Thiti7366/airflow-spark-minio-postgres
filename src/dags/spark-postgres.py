@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 ###############################################
 # Parameters
 ###############################################
-spark_conn = os.environ.get("spark_conn", "spark_conn")
+spark_conn = os.environ.get("spark_default", "spark_default")
 spark_master = "spark://spark:7077"
 postgres_driver_jar = "/usr/local/spark/assets/jars/postgresql-42.2.6.jar"
 
@@ -46,7 +46,7 @@ spark_job_load_postgres = SparkSubmitOperator(
     task_id="spark_job_load_postgres",
     application="/usr/local/spark/applications/load-postgres.py",
     name="load-postgres",
-    conn_id="spark_conn",
+    conn_id=spark_conn,
     verbose=1,
     conf={"spark.master": spark_master},
     application_args=[movies_file, ratings_file,
